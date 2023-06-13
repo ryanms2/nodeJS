@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const handlebars = require("express-handlebars");
 const app = express()
+const admin = require("./routes/admin")
+const path = require("path")
 //const mongoose = require("mongoose")
 
 
@@ -17,10 +19,20 @@ const app = express()
     }, }));
     app.set('view engine', 'handlebars');
     // Mongoose
-    
-    //
-// Rotas
 
+    // Public
+        app.use(express.static(path.join(__dirname,"public")))
+// Rotas
+    
+    app.use("/admin", admin)
+
+    app.use("/posts", (req, res) => {
+        res.send("Pagina de posts")
+    })
+    app.use("/", (req, res) => {
+        res.send("Pagina principal")
+    })
+    
 
 // Outros
 const PORT = 8081
