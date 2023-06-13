@@ -45,5 +45,5 @@ new novoUsuario({
 }).save().then(() => {
     console.log("DEELBOMMM")
 }).catch((erro)=>{
-    console.log("ouve um eroo: "+ erro)
+    console.log("ouve um erro: "+ erro)
 })
