@@ -12,6 +12,7 @@ require("./models/Postagem")
 const Postagem = mongoose.model("postagens")
 require("./models/Categoria")
 const Categoria = mongoose.model("categorias")
+const usuarios = require("./routes/usuario")
 
 // Configurações
     // sessão
@@ -84,6 +85,8 @@ const Categoria = mongoose.model("categorias")
            res.redirect("/")
         })
    })
+
+   app.use("/usuarios", usuarios)
 
    app.get("/categorias/:slug", (req, res) => {
     Categoria.findOne({slug: req.params.slug}).then((categoria) => {
