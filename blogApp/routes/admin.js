@@ -78,14 +78,18 @@ router.post("/categorias/edit", eAdmin, (req, res) => {
 
         categoria.nome = req.body.nome
         categoria.slug = req.body.slug
-
-        categoria.save().then(() => {
+        if(categoria.nome.length < 4 && categoria.slug.length < 4){
+            req.flash("error_msg", "Erro, nome muito curto")
+            res.redirect("/admin/categorias")
+        }else {
+            categoria.save().then(() => {
             req.flash("success_msg", "Categoria editada com sucesso")
             res.redirect("/admin/categorias")
-        }).catch((err) => {
-            req.flash("error_msg", "Houve um erro interno ao editar categoria")
-            res.redirect("/admin/categorias")
-        })
+            }).catch((err) => {
+                req.flash("error_msg", "Houve um erro interno ao editar categoria")
+                res.redirect("/admin/categorias")
+            }) 
+        }
 
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao editar a categoria")
@@ -178,13 +182,21 @@ router.post("/postagens/edit", eAdmin, (req, res) => {
         postagem.conteudo = req.body.conteudo
         postagem.categoria = req.body. categoria
 
-        postagem.save().then(() => {
-            req.flash("success_msg", "Postagem editada com sucesso!")
-            res.redirect("/admin/postagens")
-        }).catch((err) => {
-            req.flash("error_msg", "Erro interno")
-            res.redirect("/admin/postagens")
-        })
+        if(postagem.titulo.length < 4 && postagem.slug.length < 4 && postagem.descricao.length < 5 && postagem.conteudo.length < 20 && postagem.categoria.length < 4){
+            
+            req.flash("error_msg", "Escreva no minimo 4 caracteres!")
+            res.redirect("/admin/postagens")    
+        }else {
+           postagem.save().then(() => {
+                req.flash("success_msg", "Postagem editada com sucesso!")
+                res.redirect("/admin/postagens")
+                }).catch((err) => {
+                    req.flash("error_msg", "Erro interno")
+                    res.redirect("/admin/postagens")
+                })  
+            
+        }
+        
 
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao salvar a edição")
