@@ -52,7 +52,7 @@ require("./config/auth")(passport)
     }).then(()=> {
         console.log("conectado com sucesso!")
     }).catch((err) => {
-        console.log("Eroo ao se conectar: "+ err)
+        console.log("Erro ao se conectar: "+ err)
     })
     // Public
         app.use(express.static(path.join(__dirname,"public")))
