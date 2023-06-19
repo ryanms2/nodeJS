@@ -1,15 +1,23 @@
 <h1 class="mt-2">Criando postagem</h1>
 <div class="container mt-3">
     <div class="card-body">
-        <label for="Titulo" class="form-label">Titulo: </label>
-        <input type="text" name="titulo" id="titulo" class="form-control">
-        <label for="descricao" class="form-label">Descrição: </label>
-        <input type="text" name="descricao" id="descricao" class="form-control">
-        <label for="conteudo" class="form-label">Conteudo: </label>
-        <textarea name="conteudo" id="conteudo" class="form-control"></textarea>
-        <label for="Categoria" class="form-label">Categoria:</label>
-        <select name="categoria" id="categoria" class="form-select">
-            <option value="algo">aaa</option>
-        </select>
+        <form action="/admin/postagens/novo" method="post">
+            <label for="Titulo" class="form-label">Titulo: </label>
+            <input type="text" name="titulo" id="titulo" class="form-control">
+            <label for="descricao" class="form-label">Descrição: </label>
+            <input type="text" name="descricao" id="descricao" class="form-control">
+            <label for="conteudo" class="form-label">Conteudo: </label>
+            <textarea name="conteudo" id="conteudo" class="form-control"></textarea>
+            <label for="categoria" class="form-label">Categoria:</label>
+            
+            <select name="categoria" id="categoria" class="form-select">
+            {{#each categorias}}    
+                <option value="{{_id}}">{{titulo}}</option>
+                {{else}}
+                <option value="0">Nenhuma categoria registrada</option>
+            {{/each}}    
+            </select>
+            <input type="submit" value="Adicionar Postagem" class="btn btn-success mt-2">
+        </form>
     </div>
 </div>
