@@ -1,6 +1,18 @@
 <h1>Categorias</h1>
-<div class="card">
-    <div class="card-body">
-        <input type="submit" class="btn btn-primary" value="Adicionar Categorias">
+<a href="/admin/categorias/add"><input type="submit" class="btn btn-primary" value="Adicionar Categorias"></a>
+{{#each categorias}}
+<div class="card mt-3">
+    <div class="card-body mt-2">
+        <h2>Titulo: {{titulo}}</h2>
+        <p>Slug: {{slug}}</p>
+        <p>Data: {{date}}</p>
+        <a href="/admin/categorias/edit/{{_id}}" ><button class="btn btn-success mt-4">Editar categorias</button></a>
+        <form action="/admin/categorias/deletar" method="post">
+            <input type="hidden" name="id" value="{{_id}}">
+                <button type="submit" class="btn btn-danger mt-2">Deletar Categoria</button>
+        </form>
     </div>
+    {{else}}
+    <h2>Nenhuma categoria registrada!</h2>
 </div>
+{{/each}}

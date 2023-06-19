@@ -9,6 +9,10 @@ const Categoria = new Schema({
     slug: {
         type: String,
         required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now()
     }
 })
 
