@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 })
 
 router.get("/postagens", (req, res) => {
-    Postagem.find().sort({date: "desc"}).then((postagens) => {
+    Postagem.find().populate("categoria").sort({date: "desc"}).then((postagens) => {
       res.render("admin/postagens", {postagens: postagens})  
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao mostrar a lista de postagens")
@@ -31,7 +31,8 @@ router.post("/postagens/novo", (req, res) => {
         titulo: req.body.titulo,
         descricao: req.body.descricao,
         conteudo: req.body.conteudo,
-        categoria: req.body.categoria
+        categoria: req.body.categoria,
+        slug: req.body.slug
     }
 
     new Postagem(novaPostagem).save().then(() => {
@@ -40,6 +41,51 @@ router.post("/postagens/novo", (req, res) => {
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao adicionar postagem")
         res.redirect("/admin/postagens")
+    })
+})
+
+router.post("/postagens/deletar", (req, res) => {
+    Postagem.deleteOne({_id: req.body.id}).then(() => {
+        req.flash("success_msg", "Postagem deletada com sucesso")
+        res.redirect("/admin/postagens")
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro ao deletar postagem")
+        res.redirect("/admin/postagens")
+    })
+})
+
+router.get("/postagens/edit/:id", (req, res) => {
+    Postagem.findOne({_id: req.params.id}).then((postagem) => {
+        Categoria.find().then((categoria) => {
+
+            res.render("admin/editpostagens", {categoria: categoria, postagem: postagem})
+
+        }).catch((err) => {
+            req.flash("error_msg", "Houve um erro ao listar a categoria")
+            res.redirect("/admin/postagens")
+        })
+        
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro ao listar a postagem")
+        res.redirect("/admin/postagens")
+    })
+})
+
+router.post("/postagens/edit", (req, res) => {
+    Postagem.findOne({_id: req.body.id}).then((postagem) => {
+        postagem.titulo = req.body.titulo
+        postagem.descricao = req.body.descricao
+        postagem.conteudo = req.body.conteudo
+        postagem.categoria = req.body.categoria
+        postagem.slug = req.body.slug
+
+        postagem.save().then(() => {
+            req.flash("success_msg", "Postagem editada com sucesso!")
+            res.redirect("/admin/postagens")
+        }).catch((err) => {
+            req.flash("error_msg", "Houve um erro ao editar a postagem")
+            res.redirect("/admin/postagens")
+        })
     })
 })
 

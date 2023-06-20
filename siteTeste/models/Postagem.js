@@ -22,6 +22,10 @@ const Postagem = new Schema ({
     date: {
         type: Date,
         default: Date.now()
+    },
+    slug: {
+        type: String,
+        required: true
     }
 })
 

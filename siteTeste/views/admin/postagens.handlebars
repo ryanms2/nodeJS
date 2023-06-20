@@ -6,8 +6,13 @@
         <h2>{{titulo}}</h2>
         <h4>{{descricao}}</h4>
         <p>{{conteudo}}</p>
-        <p>categoria: {{categorias.titulo}}</p>
-        <input type="submit" class="btn btn-primary" value="Adicionar Postagens">
+        <p>categoria: {{categoria.titulo}}</p>
+        <p>Slug: {{slug}}</p>
+        <a href="/admin/postagens/edit/{{_id}}"><input type="submit" class="btn btn-success" value="Editar postagem"></a>
+        <form action="/admin/postagens/deletar" method="post">
+            <input type="hidden" name="id" value="{{_id}}">
+            <input type="submit" class="btn btn-danger mt-2" value="Deletar postagem">
+        </form>
     </div>
     {{else}}
     <input type="submit" class="btn btn-primary" value="Adicionar Postagens">

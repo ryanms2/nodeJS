@@ -180,7 +180,7 @@ router.post("/postagens/edit", eAdmin, (req, res) => {
         postagem.slug = req.body.slug
         postagem.descricao = req.body.descricao
         postagem.conteudo = req.body.conteudo
-        postagem.categoria = req.body. categoria
+        postagem.categoria = req.body.categoria
 
         if(postagem.titulo.length < 4 && postagem.slug.length < 4 && postagem.descricao.length < 5 && postagem.conteudo.length < 20 && postagem.categoria.length < 4){
             

@@ -7,6 +7,10 @@ const admin = require("./routes/admin")
 const mongoose = require("mongoose")
 const session = require("express-session")
 const flash = require("connect-flash")
+require("./models/Postagem")
+const Postagem = mongoose.model("postagens")
+require("./models/Categoria")
+const Categoria = mongoose.model("categorias")
 
 app.use(session({
     secret: "siteandroidtechandro",
@@ -48,9 +52,45 @@ app.use(express.static(path.join(__dirname, "public")))
 
 app.use("/admin", admin)
 
-app.get("/", (req, res) => {
-    res.render("index")
+app.get("/postagem/:titulo", (req, res) => {
+    Postagem.find({titulo: req.params.titulo}).then((postagem) => {
+        const titulo = req.params.titulo
+        
+        Postagem.findOne({titulo}).then(postagem => {
+            console.log(postagem)
+            if(postagem){
+                const post = {
+                    titulo: postagem.titulo,
+                    descricao: postagem.descricao,
+                    conteudo: postagem.conteudo,
+                    categoria: postagem.categoria
+                }
+                res.render('postagem/index', post)
+            } else {
+                req.flash("error_msg", "Essa página não existe")
+                res.redirect("/")
+            }
+        })
+        
+    }).catch((err) => {
+        req.flash("error_msg", "Erro interno")
+        res.redirect("/")
+    })
+    
+    
 })
+
+app.get("/", (req, res) => {
+    Postagem.find().populate("categoria").sort("desc").then((postagens) => {
+       res.render("index", {postagens: postagens}) 
+    }).catch((err) => {
+        req.flash("error-msg", "Erro ao listar postagens")
+        res.redirect("/")
+    })
+    
+})
+
+
 
 const PORT = 8089
 app.listen(PORT, () => {

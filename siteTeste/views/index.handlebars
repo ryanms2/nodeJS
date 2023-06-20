@@ -1,5 +1,16 @@
 <div class="card mt-4">
     <div class="card-body">
-       <h2>1</h2> 
+       <h2>1</h2>
     </div>
 </div>
+{{#each postagens}}
+<div class="card mt-4">
+    <div class="card-body">
+        <h1>{{titulo}}</h1>
+        <h4>{{descricao}}</h4>
+        <p>{{conteudo}}</p>
+        <a href="/postagem/{{slug}}"><button>Leia mais</button></a>
+        <h6>categoria: {{categoria.titulo}}</h6>
+    </div>
+</div>
+{{/each}}
