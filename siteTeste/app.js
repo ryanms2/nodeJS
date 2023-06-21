@@ -52,11 +52,11 @@ app.use(express.static(path.join(__dirname, "public")))
 
 app.use("/admin", admin)
 
-app.get("/postagem/:titulo", (req, res) => {
-    Postagem.find({titulo: req.params.titulo}).then((postagem) => {
-        const titulo = req.params.titulo
+app.get("/postagem/:slug", (req, res) => {
+    Postagem.find({slug: req.params.slug}).then((postagem) => {
+        const slug = req.params.slug
         
-        Postagem.findOne({titulo}).then(postagem => {
+        Postagem.findOne({slug}).then(postagem => {
             console.log(postagem)
             if(postagem){
                 const post = {
@@ -78,6 +78,34 @@ app.get("/postagem/:titulo", (req, res) => {
     })
     
     
+})
+
+app.get("/categorias", (req,res) => {
+    Categoria.find().sort("desc").then((categorias) => {
+        Postagem.find().sort("desc").then((postagens) => {
+           res.render("categorias/index", {categorias: categorias, postagens: postagens}) 
+        })
+        
+    }).catch((err) => {
+    req.flash("error_msg", "Erro interno")
+    res.redirect("/")
+    })
+})
+
+app.get("/postagens/:slug", (req, res) => {
+    Categoria.findOne({slug: req.params.slug}).then((categoria) => {
+        if (categoria) {
+            Postagem.find({categoria: categoria._id}).then((postagens) => {
+                res.render("categorias/postagens", {postagens: postagens, categoria: categoria})
+            }).catch((err) => {
+                req.flash("error_msg", "Erro ao listar postagens")
+                res.redirect("/")
+            })
+        }
+    }).catch((err) => {
+        req.flash("error_msg", "Erro ao encontrar categoria")
+        res.redirect("/categorias")
+    })
 })
 
 app.get("/", (req, res) => {

@@ -1,0 +1,11 @@
+<h1>Escolha uma categoria que te agrada</h1>
+<div class="card mt-4">
+    {{#each categorias}}
+    <div class="card-body">
+        <h2>{{titulo}}</h2>
+        <a href="/postagens/{{slug}}"><button class="btn btn-primary">ver postagens</button></a>
+    </div>
+    {{else}}
+    <h2>Não existe nenhuma categoria registrada!</h2>
+    {{/each}}
+</div>
