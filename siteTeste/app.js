@@ -11,6 +11,8 @@ require("./models/Postagem")
 const Postagem = mongoose.model("postagens")
 require("./models/Categoria")
 const Categoria = mongoose.model("categorias")
+const usuario = require("./routes/usuario")
+
 
 app.use(session({
     secret: "siteandroidtechandro",
@@ -57,7 +59,6 @@ app.get("/postagem/:slug", (req, res) => {
         const slug = req.params.slug
         
         Postagem.findOne({slug}).then(postagem => {
-            console.log(postagem)
             if(postagem){
                 const post = {
                     titulo: postagem.titulo,
@@ -107,6 +108,8 @@ app.get("/postagens/:slug", (req, res) => {
         res.redirect("/categorias")
     })
 })
+
+app.use("/usuarios", usuario )
 
 app.get("/", (req, res) => {
     Postagem.find().populate("categoria").sort("desc").then((postagens) => {

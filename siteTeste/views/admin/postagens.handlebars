@@ -1,7 +1,7 @@
 <h1>Postagens</h1>
 <a href="/admin/postagens/add"><input type="submit" class="btn btn-primary" value="Adicionar Postagens"></a>
 {{#each postagens}}
-<div class="card">
+<div class="card mt-4">
     <div class="card-body">
         <h2>{{titulo}}</h2>
         <h4>{{descricao}}</h4>
@@ -14,8 +14,8 @@
             <input type="submit" class="btn btn-danger mt-2" value="Deletar postagem">
         </form>
     </div>
-    {{else}}
-    <input type="submit" class="btn btn-primary" value="Adicionar Postagens">
-    <h2>Não há nenhuma postagem registrada!</h2>
 </div>
+{{else}}
+<input type="submit" class="btn btn-primary" value="Adicionar Postagens">
+<h2>Não há nenhuma postagem registrada!</h2>
 {{/each}}
