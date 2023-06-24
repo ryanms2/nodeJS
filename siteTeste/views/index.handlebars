@@ -6,7 +6,7 @@
   {{#if user}}
   
   {{else}}
-  <a class="btn btn-primary btn-lg" href="#" role="button">Crie uma conta</a>
+  <a class="btn btn-primary btn-lg" href="/usuarios/registro" role="button">Crie uma conta</a>
   {{/if}}
 </div>
 <h1>Postagens</h1>
@@ -15,10 +15,11 @@
     <div class="card-body">
         <h1>{{titulo}}</h1>
         <h4>{{descricao}}</h4>
-        <p>{{conteudo}}</p>
+        
         <a href="/postagem/{{slug}}"><button class="btn btn-success">Leia mais</button></a>
         <h6 class="mt-2">categoria: {{categoria.titulo}}</h6>
     </div>
 </div>
 {{/each}}
+
 
