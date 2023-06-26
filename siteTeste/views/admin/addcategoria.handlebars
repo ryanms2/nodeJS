@@ -1,4 +1,9 @@
 <h1 class="mt-2">Criar Categoria</h1>
+{{#each erros}} 
+        <button class="alert alert-danger">{{texto}}</button>
+{{else}} 
+
+{{/each}}
 <div class="card mt-3">
         <form action="/admin/categorias/novo" method="post">
         <label for="titulo" class="form-label">titulo: </label>

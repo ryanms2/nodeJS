@@ -14,6 +14,7 @@ const Categoria = mongoose.model("categorias")
 const usuario = require("./routes/usuario")
 const passport = require("passport")
 require("./config/auth")(passport)
+const db = require("./config/db")
 
 app.use(session({
     secret: "siteandroidtechandro",
@@ -46,7 +47,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 mongoose.Promise = global.Promise;
-    mongoose.connect("mongodb://127.0.0.1/siteteste", {
+    mongoose.connect(db.mongoURI, {
         useNewUrlParser: true
     }).then(()=> {
         console.log("conectado com sucesso!")
@@ -134,7 +135,7 @@ app.get("/404", (req, res) => {
 
 
 
-const PORT = 8089
+const PORT = process.env.PORT || 8089
 app.listen(PORT, () => {
     console.log("servidor rodando!")
 })

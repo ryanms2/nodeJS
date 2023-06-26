@@ -152,21 +152,31 @@ router.post("/categorias/novo", eAdmin, (req, res) => {
     var erros = []
 
     if(req.body.titulo.length < 3 || req.body.titulo == null || req.body.titulo == undefined) {
-        
+        erros.push({texto: "Titulo muito pequeno!"})
     }
 
-    const novaCategoria = {
+    if(req.body.slug.length < 3 || req.body.titulo == null || req.body.titulo == undefined) {
+        erros.push({texto: "Slug muito pequeno!"})
+    }
+
+    if(erros.length > 0){
+        res.render("admin/addcategoria", {erros: erros})
+    }else {
+       const novaCategoria = {
         titulo: req.body.titulo,
         slug: req.body.slug
+        }
+
+        new Categoria(novaCategoria).save().then(() => {
+            req.flash("success_msg", "Categoria salva com sucesso")
+            res.redirect("/admin/categorias")
+        }).catch((err) => {
+            req.flash("error_msg", "Ouve um erro ao salva a categoria")
+            res.redirect("/admin/categorias")
+        }) 
     }
 
-    new Categoria(novaCategoria).save().then(() => {
-        req.flash("success_msg", "Categoria salva com sucesso")
-        res.redirect("/admin/categorias")
-    }).catch((err) => {
-        req.flash("error_msg", "Ouve um erro ao salva a categoria")
-        res.redirect("/admin/categorias")
-    })
+    
 })
 
 router.post("/categorias/deletar", eAdmin, (req, res) => {
