@@ -11,7 +11,7 @@ html, body {
     width: 98vw;
     height: 100vh;
     font-family: 'Roboto', sans-serif;
-    background-color: rgb(37, 131, 207);
+    background-color: #588b8b;
 }
 
 main {
@@ -42,7 +42,7 @@ input {
 }
 
 button[type="submit"] {
-    background-color: rgb(25, 158, 158);
+    background-color: #ffd5c2;
     height: 50px;
     width: 50px;
     border: none;
@@ -103,10 +103,10 @@ select:hover {
 }
 
 .btn-action:nth-child(1) {
-    background-color: orange;
+    background-color: #f28f3b;
     margin-right: 5px;
 }
 
 .btn-action:nth-child(2) {
-    background-color: rgba(237, 42, 42, 0.9);
+    background-color: #c8553d;
 }
