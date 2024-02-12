@@ -1,19 +1,15 @@
 import './App.css';
 import HelloWorld from "./components/HelloWorld";
+import Pessoa from "./components/Pessoa";
 
 function App() {
 
-  function sum(a, b) {
-    return a + b
-  }
-
-
+  const nome = "Rian"
+  const idade = 19
   return (
     <div className="App">
-      <h1>Meu primeiro app</h1>
-      <p>a soma é {sum(2, 2)}</p>
-      <p>hehehe</p>
       <HelloWorld/>
+      <Pessoa nome={nome} idade={idade}/>
     </div>
   );
 }
