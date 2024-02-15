@@ -1,0 +1,16 @@
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.list li {
+    margin: 0 1em;
+}
+
+.list svg {
+    font-size: 1.5em;
+    color: rgb(190, 190, 109);
+    cursor: pointer;
+}
