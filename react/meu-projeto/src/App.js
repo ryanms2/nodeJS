@@ -1,25 +1,26 @@
 import './App.css';
-import HelloWorld from "./components/HelloWorld";
-import Pessoa from "./components/Pessoa";
-import Form from "./components/Form";
-import Evento from "./components/Evento"
-import Condicional from './components/Condicional';
-import OutraLista from './components/OutraLista';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Contato from './pages/Contato';
+import Empresa from './pages/Empresa';
+import Home from './pages/Home';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+
 function App() {
 
-  const nome = "Rian"
-  const idade = 19
-
-  const itens = ['mamao', 'mostarda', 'file']
   return (
-    <div className="App">
-      <HelloWorld/>
-      <Pessoa nome={nome} idade={idade}/>
-      <Form/>
-      <Evento/>
-      <Condicional/>
-      <OutraLista itens={itens}/>
-    </div>
+    <Router>
+      <Navbar/>
+      <Routes>
+        <Route exact path='/' element={<Home />}>
+        </Route>
+        <Route path='/empresa' element={<Empresa/>}>
+        </Route>
+        <Route path='/contato' element={<Contato/>}>
+        </Route>
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
