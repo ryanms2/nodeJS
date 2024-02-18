@@ -10,23 +10,45 @@
       },
       "cost": 0,
       "services": []
+    },
+    {
+      "id": "b322",
+      "category": {
+        "id": "3",
+        "name": "Design"
+      },
+      "name": "ai cahcorro",
+      "budget": "2000",
+      "cost": 0,
+      "services": []
+    },
+    {
+      "id": "e835",
+      "name": "john we",
+      "budget": "3000",
+      "category": {
+        "id": "3",
+        "name": "Design"
+      },
+      "cost": 0,
+      "services": []
     }
   ],
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Infra"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Desenvolvimento"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Design"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Planejamento"
     }
   ]
