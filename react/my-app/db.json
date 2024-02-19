@@ -1,28 +1,6 @@
 {
   "projects": [
     {
-      "id": "b6a7",
-      "name": "ai cahorro ai cachorro",
-      "budget": "5000",
-      "category": {
-        "id": "2",
-        "name": "Desenvolvimento"
-      },
-      "cost": 0,
-      "services": []
-    },
-    {
-      "id": "b322",
-      "category": {
-        "id": "3",
-        "name": "Design"
-      },
-      "name": "ai cahcorro",
-      "budget": "2000",
-      "cost": 0,
-      "services": []
-    },
-    {
       "id": "e835",
       "name": "john we",
       "budget": "3000",
