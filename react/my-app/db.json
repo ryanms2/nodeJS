@@ -3,13 +3,26 @@
     {
       "id": "e835",
       "name": "john wesley",
-      "budget": "4300",
+      "budget": "43001",
       "category": {
         "id": "3",
         "name": "Design"
       },
-      "cost": 0,
-      "services": []
+      "cost": 1101,
+      "services": [
+        {
+          "name": "service 1",
+          "cost": "100",
+          "description": "serviceeee",
+          "id": "3da466fe-ffd9-4273-bc96-c21f37d76a01"
+        },
+        {
+          "name": "service 2",
+          "cost": "1001",
+          "description": "serviceeee",
+          "id": "28bd2013-9490-4d5f-b29f-9aab124edbdd"
+        }
+      ]
     },
     {
       "id": "e3ec",
