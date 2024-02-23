@@ -8,33 +8,8 @@
         "id": "3",
         "name": "Design"
       },
-      "cost": 11201,
-      "services": [
-        {
-          "name": "service 1",
-          "cost": "100",
-          "description": "serviceeee",
-          "id": "3da466fe-ffd9-4273-bc96-c21f37d76a01"
-        },
-        {
-          "name": "service 2",
-          "cost": "1001",
-          "description": "serviceeee",
-          "id": "28bd2013-9490-4d5f-b29f-9aab124edbdd"
-        },
-        {
-          "name": "mais 1",
-          "cost": "10000",
-          "description": "ssssssssss",
-          "id": "d46bc32c-2b8a-4e8a-8eab-a89fd7a80432"
-        },
-        {
-          "name": "teste",
-          "cost": "100",
-          "description": "aaaaa",
-          "id": "e4ca1821-7115-4a13-9e67-f3b1b219754a"
-        }
-      ]
+      "cost": 0,
+      "services": []
     },
     {
       "id": "e3ec",
