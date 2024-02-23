@@ -8,7 +8,7 @@
         "id": "3",
         "name": "Design"
       },
-      "cost": 1101,
+      "cost": 11201,
       "services": [
         {
           "name": "service 1",
@@ -21,6 +21,18 @@
           "cost": "1001",
           "description": "serviceeee",
           "id": "28bd2013-9490-4d5f-b29f-9aab124edbdd"
+        },
+        {
+          "name": "mais 1",
+          "cost": "10000",
+          "description": "ssssssssss",
+          "id": "d46bc32c-2b8a-4e8a-8eab-a89fd7a80432"
+        },
+        {
+          "name": "teste",
+          "cost": "100",
+          "description": "aaaaa",
+          "id": "e4ca1821-7115-4a13-9e67-f3b1b219754a"
         }
       ]
     },
