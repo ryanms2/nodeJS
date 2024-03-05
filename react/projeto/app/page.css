@@ -2,3 +2,25 @@
     color: aqua;
     text-align: center;
 }
+
+.container_login {
+    display: flex;
+    width: 40%;
+    height: 40%;
+    margin: auto;
+    margin-top: 200px;
+    background-color: rgb(58, 53, 53);
+    border-radius: 20px;
+}
+
+.container_login form {
+    padding: 10px;
+    
+}
+
+.container_login input {
+    width: 300px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    margin-left: 4px;
+}
